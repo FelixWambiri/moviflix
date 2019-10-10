@@ -1,0 +1,6 @@
+.episodes-container {
+  margin-top: 10%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  grid-gap: 1rem;
+}

@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.scss";
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+/** Third party libraries**/
+import { Provider } from "mobx-react";
+
+/** Componets **/
+import Header from "./components/Header";
+import Episodes from "./components/Episodes";
+
+/**Utility Fucntion **/
+import { setUpMovieStore } from "./api/setup";
+interface Props {}
+interface State {
+  movieStore: any;
 }
 
-export default App;
+export default class App extends Component<Props, State> {
+  state = {
+    movieStore: null
+  };
+
+  componentDidMount = (): void => {
+    const { movieStore } = setUpMovieStore();
+    this.setState({ movieStore });
+  };
+  render() {
+    const { movieStore } = this.state;
+    if (!movieStore) return null;
+
+    return (
+      <Provider movieStore={movieStore}>
+        <div className="App">
+          <Header />
+          <Episodes />
+        </div>
+      </Provider>
+    );
+  }
+}
