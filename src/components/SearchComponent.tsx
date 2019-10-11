@@ -36,6 +36,7 @@ export const SearchComponent = (props: any) => {
           value={searchTerm}
           onChange={handleChange}
           data-testid="searchTerm"
+          autoComplete="off"
         />
         <div className="search-button" onClick={onSubmit} data-testid="submit">
           <Icon icon={search} />

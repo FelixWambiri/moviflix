@@ -9,6 +9,7 @@ exports[`<SearchComponent/> matches snapshot 1`] = `
       class="search-box"
     >
       <input
+        autocomplete="off"
         class="search-txt"
         data-testid="searchTerm"
         name="searchTerm"
