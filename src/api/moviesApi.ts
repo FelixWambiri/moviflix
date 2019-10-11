@@ -81,8 +81,7 @@ const MovieModel = types.model("MovieModel", {
 export const MoviesModel = types
   .model("Movies", {
     movies: types.optional(types.array(MovieModel), []),
-    errors: types.string,
-    isResponseBlank: types.string
+    errors: types.string
   })
   .actions(self => {
     const getMovies = flow<
@@ -95,7 +94,6 @@ export const MoviesModel = types
           .then(res => res.data);
 
         self.movies = response as any;
-        console.log(response)
       } catch (error) {
         self.errors = "Something went wrong";
       }
