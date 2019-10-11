@@ -14,7 +14,7 @@ describe("The App componet", () => {
     });
 
     it("not render the episodes component initially ", () => {
-      cy.get(".container").should("have.length", 0);
+      cy.get(".card").should("have.length", 0);
     });
   });
 
@@ -30,14 +30,14 @@ describe("The App componet", () => {
 
       cy.wait("@create");
 
-      cy.get(".container").should("have.length", 10);
-      cy.get(".container").each($el => {
-        expect($el.text()).to.include( "Girls");
+      cy.get(".card").should("have.length", 10);
+      cy.get(".card").each($el => {
+        expect($el.text()).to.include("Girls");
       });
     });
   });
 
-  context("Should return the screen to the way it was  ", ()=> {
+  context("Should return the screen to the way it was  ", () => {
     it("if no series was found", () => {
       cy.server();
       cy.route("GET", "**/http://api.tvmaze.com/search/shows?q=?**").as(
@@ -47,8 +47,8 @@ describe("The App componet", () => {
 
       cy.get(".search-txt").type("12sd32 {enter}");
       cy.wait("@create");
-      cy.get(".episodes-container").should("have.text", "Search for a series")
-      cy.get(".container").should("have.length", 0);
-    })
-  })
+      cy.get(".episodes-container").should("have.text", "Search for a series");
+      cy.get(".card").should("have.length", 0);
+    });
+  });
 });
