@@ -47,7 +47,10 @@ describe("The App componet", () => {
 
       cy.get(".search-txt").type("12sd32 {enter}");
       cy.wait("@create");
-      cy.get(".episodes-container").should("have.text", "Search for a series");
+      cy.get(".episodes-container").should(
+        "have.text",
+        "Type name of series in the Search Bar and Enter"
+      );
       cy.get(".card").should("have.length", 0);
     });
   });

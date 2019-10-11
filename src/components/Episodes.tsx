@@ -23,7 +23,7 @@ const Episodes: React.FC = (props: any): JSX.Element => {
       ) : movieStore.errors ? (
         <p>Something went wrong</p>
       ) : (
-        <div>Search for a series</div>
+        <div>Type name of series in the Search Bar and Enter</div>
       )}
     </div>
   );

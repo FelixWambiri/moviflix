@@ -49,7 +49,7 @@ exports[`<App/> should match snapshot 1`] = `
       class="episodes-container"
     >
       <div>
-        Search for a series
+        Type name of series in the Search Bar and Enter
       </div>
     </div>
   </div>
